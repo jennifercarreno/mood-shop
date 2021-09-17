@@ -9,7 +9,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: bisque;
+    background-color:pink
 }
 
 .page-header ul {
@@ -25,3 +25,40 @@ body {
     text-decoration: none;
 }
 
+.items {
+    width: 80%;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1em;
+}
+
+.items img {
+    width: 100%;
+    height: auto;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 1em;
+    padding: 1em;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(236, 235, 235);
+    background-color: rgb(236, 235, 235);
+}
+
+.item p {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+.item button {
+    background-color: pink;
+    border-radius: 15px;
+    border: none;
+}
