@@ -28,3 +28,21 @@ for (let i = 0; i < data.length; i += 1) {
     
     itemsContainer.appendChild(newDiv);
 }
+
+const cart =[]
+
+
+
+function addItem(name, price){
+    const item = {name: name, price: price, qty: 1}
+    cart.push(name)
+
+}
+
+function showItems() {
+    console.log(`You have ${cart.length} items in your cart`)
+
+}
+
+addItem("Apple", 0.99);
+showItems();
