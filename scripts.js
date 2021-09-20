@@ -61,6 +61,16 @@ function showItems() {
     //console.log();
     cartQty.innerHTML = `You have ${getQty()} items in your cart`;
 
+    const all_items_button = Array.from(document.querySelectorAll("button"));
+    console.log(all_items_button);
+    
+    all_items_button.forEach(elt => elt.addEventListener('click', () => {
+        addItem(elt.getAttribute('id'), elt.getAttribute('data-price'))
+        showItems()
+      }))
+      
+
+
     let itemStr = '';
     
     for (let i = 0; i < cart.length; i++) {
