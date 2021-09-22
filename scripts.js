@@ -85,7 +85,6 @@ function addItem(name, price) {
 
 //Show Items
 function showItems() {
-    let qty = getQty();
 
     const all_items_button = Array.from(document.querySelectorAll("button"));
     console.log(all_items_button);
@@ -99,15 +98,16 @@ function showItems() {
         }
     }
 
-    //showCart();
-
 }
 
 // Get Qty 
 function getQty() {
     let qty = 0;
     for (let i = 0; i < cart.length; i++) {
-        qty += cart[i].qty;
+        if (cart[i].name != "open"){
+          qty += cart[i].qty;  
+        }
+        
     }
     return qty;
 }
@@ -164,24 +164,31 @@ function showCart() {
     for (let i = 0; i < cart.length; i++) {
         //console.log(`${cart[i].name} $${cart[i].price} x ${cart[i].qty}`);
         const name = cart[i].name;
+        console.log(name)
         const price = cart[i].price;
         const qty = cart[i].qty;
-        cartQty.innerHTML = `You have ${getQty()} items in your cart`;
 
-        itemStr  += `<li> 
-        ${name} $${price} x ${qty} = ${qty * price}
-        <button class="remove" data-name="${name}"> Remove </button>
-        <button class="add-one" data-name="${name}"> + </button>
-        <button class="remove-one" data-name="${name}"> - </button>
-        <input class="update" type="number" data-name="${name}">
+        if (name != "open"){
+            cartQty.innerHTML = `You have ${getQty()} items in your cart`;
+
+            itemStr  += `<li> 
+            ${name} $${price} x ${qty} = ${qty * price}
+            <button class="remove" data-name="${name}"> Remove </button>
+            <button class="add-one" data-name="${name}"> + </button>
+            <button class="remove-one" data-name="${name}"> - </button>
+            <input class="update" type="number" data-name="${name}">
          </li>`
+            cartTotal.innerHTML = `Total in Cart: $${getTotal()}`;
+
+        }
+
+        
         
     }
 
     itemList.innerHTML = itemStr;
     
     //console.log(`Total in Cart: $${getTotal()}`);
-    cartTotal.innerHTML = `Total in Cart: $${getTotal()}`;
 }
 
 
