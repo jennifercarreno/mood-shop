@@ -1,43 +1,63 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Mood Shop</title>
     <link rel='stylesheet' href='styles.css'>
-   
-  </head>
 
-  <body>
-      
-      <header class = 'page-header'>
-          <h4>The Mood Shop</h4>
-          <nav>
-              <ul>
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">About</a></li>
-                  <li><a href="#">Cart</a></li>
-              </ul>
-          </nav>
-      </header>
-      <main>
-          <div class='items' id="items">
+</head>
 
-          </div>
-      </main>
-      <footer>
-          <div id = 'cart-qty'>
-              <!-- cart quantity here-->
-          </div>
+<body>
+
+    <header class='page-header'>
+        <h4>The Mood Shop</h4>
+        <nav>
+            <div id="sideBar" class='cart'>
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <ul id = "side">
+                    <!-- <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li> -->
+                    <li><a href="#">Cart</a></li>
+                    <div id='cart-qty'>
+                         <!-- cart quantity here-->
+                         
+                     </div>
+                     <div id='item-list'>
+                    </div>
+                     
+                     <div id='cart-total'>
+                         <!-- cart total -->
+                     </div>
+                </ul>
+            </div>
+        </nav>
+        <div id="main">
+            <button onclick="openNav()" class="openbtn" data-name="openNav">&#9776; Open Sidebar</button>
+        </div>
+    </header>
+    <main>
+        <div class='items' id="items">
+
+        </div>
+    </main>
+
+    <footer>
+       
+
         
-          <ul id = 'item-list'>
-              <!-- cart items-->
 
-          </ul>
+        
+    </footer>
+    <script>
+        function openNav() {
+            document.getElementById("sideBar").style.width = "50%";
+        }
 
-          <div id = 'cart-total'>
-              <!-- cart total -->
-          </div>
-      </footer>
-      <script src='scripts.js' type="module"></script>
-  </body>
+        function closeNav() {
+            document.getElementById("sideBar").style.width = "0";
+        }
+    </script>
+    <script src='scripts.js' type="module"></script>
+</body>
 
 </html>
