@@ -65,10 +65,6 @@ itemList.onchange = function (e) {
 
 }
 
-const obj = {}
-console.log(obj)
-console.log("************")
-
 //Add Item
 function addItem(name, price) {
     for (let i = 0; i < cart.length; i++) {
@@ -122,6 +118,7 @@ function getTotal() {
     return total.toFixed(2);
 }
 
+//remove item
 function removeItem(name, qty = 0) {
     for (let i = 0; i < cart.length; i++) {
         if (cart[i].name === name) {
@@ -131,7 +128,6 @@ function removeItem(name, qty = 0) {
             if (cart[i].qty < 1 || qty === 0) {
                 cart.splice(i, 1);
             }
-            //showItems();
             showCart();
             return;
         }
@@ -139,7 +135,7 @@ function removeItem(name, qty = 0) {
     }
   
 }
-
+//update cart 
 function updateCart(name, qty) {
     for (let i = 0; i < cart.length; i++) {
         if (cart[i].name === name) {
@@ -148,7 +144,6 @@ function updateCart(name, qty) {
                 return;
             }
             cart[i].qty = qty;
-            //showItems();
             showCart();
             return;
         }
@@ -156,15 +151,13 @@ function updateCart(name, qty) {
     }
 
 }
-
+ 
+//display cart
 function showCart() {
-    // let itemUl = document.createElement('ol')
     let itemStr = '';
 
     for (let i = 0; i < cart.length; i++) {
-        //console.log(`${cart[i].name} $${cart[i].price} x ${cart[i].qty}`);
         const name = cart[i].name;
-        console.log(name)
         const price = cart[i].price;
         const qty = cart[i].qty;
 
@@ -172,7 +165,7 @@ function showCart() {
             cartQty.innerHTML = `You have ${getQty()} items in your cart`;
 
             itemStr  += `<li> 
-            ${name} $${price} x ${qty} = ${qty * price}
+            ${name} $${price} x ${qty} = ${(qty * price).toFixed(2)}
             <button class="remove" data-name="${name}"> Remove </button>
             <button class="add-one" data-name="${name}"> + </button>
             <button class="remove-one" data-name="${name}"> - </button>
@@ -188,11 +181,7 @@ function showCart() {
 
     itemList.innerHTML = itemStr;
     
-    //console.log(`Total in Cart: $${getTotal()}`);
 }
-
-
-
 showItems();
 showCart();
 
